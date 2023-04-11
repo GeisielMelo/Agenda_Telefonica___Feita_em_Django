@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{%block titulo%}{{contato.nome}} {{ contato.sobrenome }} | {%endblock%}
+
+{%block conteudo%}
+    <style>
+    .estilo_da_imagem {
+        min-width: 225px;
+        min-height: 150px;
+        max-width: 225px;
+        max-height: auto;
+        border-radius: 100px;
+        border: 2px solid black;
+    }
+            
+    </style>
+
+    <h1 class="mt-5">{{ contato.nome }} {{ contato.sobrenome }}</h1>
+    {% if contato.foto %}
+        <p><img class="estilo_da_imagem" src="{{ contato.foto.url }}" alt="Imagem de perfil"></p>
+    {% endif %}
+    <dl>
+    <dt>ID</dt>
+    <dd>{{ contato.id }}</dd>
+
+    <dt>Telefone</dt>
+    <dd>{{ contato.telefone }}</dd>
+
+    <dt>E-mail</dt>
+    <dd>{{ contato.email }}</dd>
+
+    <dt>Data criação</dt>
+    <dd>{{ contato.data_criacao|date:'d/m/Y H:i:s' }}</dd>
+
+    <dt>Categoria</dt>
+    <dd>{{ contato.categoria }}</dd>
+
+    <dt>Descrição</dt>
+    <dd>{{ contato.descricao }}</dd>
+    </dl>
+{%endblock%}
